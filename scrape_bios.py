@@ -21,7 +21,7 @@ def build_bios_dict(seasons=[]):
 def bios_to_csv(bios_dict):
     for season in bios_dict:
         filename = 'bios' + season + '.csv'
-        bios_dict[season].to_csv(filename)
+        bios_dict[season].to_csv('data/' + filename, index=False)
         
 
 if __name__ == '__main__':
