@@ -13,11 +13,11 @@ def clear_bullet(s):
 nba_injuries = pd.DataFrame(columns=['Date', 'Team', 'Player', 'Injury'])
 
 # Scrape injury data from site
-for page in range(366):
-    URL = 'http://www.prosportstransactions.com/basketball/Search/SearchResults.php?Player=&Team=&BeginDate=2012-10-30&EndDate=2020-08-12&InjuriesChkBx=yes&Submit=Search&start=' + str(25 * page)
+for n in range(366):
+    URL = 'http://www.prosportstransactions.com/basketball/Search/SearchResults.php?Player=&Team=&BeginDate=2012-10-30&EndDate=2020-08-12&InjuriesChkBx=yes&Submit=Search&start=' + str(25 * n)
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, 'html.parser')
-    
+    print('Page ' + str(n) + '...', end='\r')
     results = soup.find_all('tr', align='left')
     
     for result in results:
